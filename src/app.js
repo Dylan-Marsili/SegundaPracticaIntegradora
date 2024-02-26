@@ -4,7 +4,7 @@ import session from 'express-session';
 import exphbs from 'express-handlebars';
 import path from 'path';
 import bodyParser from 'body-parser';
-import passport from './passportConfig';
+import passport from './passportConfig.js';
 import bcrypt from 'bcrypt';
 
 import productsRouter from './routes/products.router.js';
@@ -16,7 +16,7 @@ const app = express();
 const PORT = 8080;
 
 // Conectar a MongoDB
-mongoose.connect('mongodb://localhost:27017/coderhouse', {
+mongoose.connect('mongodb+srv://coder:jIZk1nSKACa6yEmA@codehouse.5nhulxs.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
