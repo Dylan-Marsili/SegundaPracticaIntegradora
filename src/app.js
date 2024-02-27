@@ -29,8 +29,8 @@ db.once('open', () => {
 });
 
 // Configuración de Handlebars
-app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, 'views/layouts') }));
-app.set('view engine', '.hbs');
+app.engine('handlebars', exphbs({ extname: '.hbs', defaultLayout: 'main', layoutsDir: 'views/layouts' }));
+app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 // Middleware para manejar solicitudes con cuerpo en formato JSON

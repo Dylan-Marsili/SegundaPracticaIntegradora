@@ -1,7 +1,7 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
-import UserModel from './models/User';
+import UserModel from './models/User.js';
 
 // Configuración para la estrategia local
 passport.use(new LocalStrategy({
@@ -30,7 +30,7 @@ passport.use(new LocalStrategy({
 // Configuración para la estrategia JWT
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'your-secret-key',
+  secretOrKey: 'secret-key',
 };
 
 passport.use(new JWTStrategy(jwtOptions, async (payload, done) => {
