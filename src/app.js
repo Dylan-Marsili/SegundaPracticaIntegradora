@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import session from 'express-session';
-import exphbs from 'express-handlebars';
+import { engine } from 'express-handlebars';
 import path from 'path';
 import bodyParser from 'body-parser';
 import passport from './passportConfig.js';
@@ -29,9 +29,9 @@ db.once('open', () => {
 });
 
 // Configuración de Handlebars
-app.engine('handlebars', exphbs({ extname: '.hbs', defaultLayout: 'main', layoutsDir: 'views/layouts' }));
+app.engine('handlebars', engine({ extname: '.handlebars' }));
 app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', `${__dirname}/views`);
 
 // Middleware para manejar solicitudes con cuerpo en formato JSON
 app.use(express.json());
