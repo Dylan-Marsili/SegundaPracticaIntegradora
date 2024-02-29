@@ -6,11 +6,13 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import passport from './passportConfig.js';
 import bcrypt from 'bcrypt';
+import __dirname from './utils.js'
 
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js';
 import authRouter from './routes/auth.router.js';
+import sessionsRouter from './routes/sessions.router.js'
 
 const app = express();
 const PORT = 8080;
