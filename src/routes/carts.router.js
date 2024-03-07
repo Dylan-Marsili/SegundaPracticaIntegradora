@@ -83,11 +83,15 @@ cartsRouter.put('/:cid/products/:pid', async (req, res, next) => {
       const product = cart.products.find((p) => p.product.toString() === pid);
 
       if (product) {
+        // El producto ya está en el carrito, actualiza la cantidad
         product.quantity = quantity;
         await cart.save();
         res.json(cart);
       } else {
-        res.status(404).send('Product not found in the cart');
+        // El producto no está en el carrito, agrégalo
+        cart.products.push({ product: pid, quantity });
+        await cart.save();
+        res.json(cart);
       }
     } else {
       res.status(404).send('Cart not found');
@@ -96,6 +100,7 @@ cartsRouter.put('/:cid/products/:pid', async (req, res, next) => {
     next(error);
   }
 });
+
 
 // DELETE /api/carts/:cid
 cartsRouter.delete('/:cid', async (req, res, next) => {

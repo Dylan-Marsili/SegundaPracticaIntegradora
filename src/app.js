@@ -30,6 +30,7 @@ db.once('open', () => {
   console.log('Conectado a MongoDB');
 });
 
+
 // Configuración de Handlebars
 app.engine('handlebars', engine({ extname: '.handlebars' }));
 app.set('view engine', 'handlebars');
@@ -40,7 +41,7 @@ app.use(express.json());
 
 // Middleware para manejar sesiones
 app.use(session({
-  secret: 'my-secret-key', // Cambia esto a una clave segura
+  secret: 'my-secret-key', 
   resave: false,
   saveUninitialized: true,
 }));
